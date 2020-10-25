@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.with-margin {
+  margin-bottom: 20px;
+}
+
+body {
+/*  padding-top: 5rem;*/
+  padding-bottom: 5rem;
+}
+
+.resa-grid-row {
+  /*padding-top: 15px;*/
+  padding-bottom: 3rem;
+ /* background-color: rgba(86, 61, 124, .15);*/
+  border: 1px solid rgba(37, 197, 16, 0.2);
+}
+
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.5);
+}
+.nav-text{
+  color: rgba(0, 0, 0, 0.15); 
+}
