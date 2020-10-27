@@ -1,45 +1,74 @@
 import React, { Component } from 'react'
 
 export default class SignUp extends Component {
+
+    constructor(){
+        super();
+        this.state = { name: "", email: "", phone: "", company:"" };
+      }
+      saveVisitor() {
+        fetch("https://localhost:44318/api/Visitors", {
+          method: "POST",
+          body: JSON.stringify({
+            name: this.state.name,
+            email: this.state.email,
+            phone: this.state.phone,
+            company: this.state.company,
+            seminarId: parseInt(this.props.seminarId),
+          }),
+          headers: { "Content-type": "application/json; charset=UTF-8" },
+        });
+//        }).then(() => this.props.onAddedOwner());
+      }
+
     render() {
         return (
             <>
-         <div class="row">
-            <div class="col-12 bg-primary text-white">
+         <div className="row">
+            <div className="col-12 bg-primary text-white">
             <h2>Anmälan</h2>
             </div>
         </div>
 
- <div class="row resa-grid-row">
+ <div className="row resa-grid-row">
 
-        <div class="col-12">
+        <div className="col-12">
 
-                <form action="Bekraftelse.html">
-            <div class="form-group">
+                
+            <div className="form-group">
                 <label for="inputNamn">Namn</label>
-                <input type="text" class="form-control" id="inputNamn" placeholder="Ange namn"></input>
+                <input value={this.state.name}
+            onChange={(e) => this.setState({ name: e.target.value })} 
+             type="text" className="form-control" id="inputNamn" placeholder="Ange namn"></input>
 
             </div>
+         
 
-            <div class="form-group">
+            <div className="form-group">
                 <label for="inputEmail">E-post</label>
-                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Ange e-post"/>
-                <small id="emailHelp" class="form-text text-muted">Vi kommer inte att dela din e-post med obehöriga.</small>
+                <input value={this.state.email}
+            onChange={(e) => this.setState({ email: e.target.value })} 
+            type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Ange e-post"/>
+                <small id="emailHelp" className="form-text text-muted">Vi kommer inte att dela din e-post med obehöriga.</small>
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
                 <label for="inputTelNummer">Telfonnummer</label>
-                <input type="text" class="form-control" id="inputTelNummer" placeholder="Ange tel nummer"/>
+                <input value={this.state.phone}
+            onChange={(e) => this.setState({ phone: e.target.value })}
+             type="text" className="form-control" id="inputTelNummer" placeholder="Ange tel nummer"/>
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
                 <label for="inputFötetag">Företag</label>
-                <input type="text" class="form-control" id="inputFöretag" placeholder="Ange företag"/>
+                <input value={this.state.company}
+            onChange={(e) => this.setState({ company: e.target.value })}
+                 type="text" className="form-control" id="inputFöretag" placeholder="Ange företag"/>
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Anmäl</button>
-            </form>
+            <button onClick={() => this.saveVisitor()} type="submit" className="btn btn-primary">Anmäl</button>
+            
 
         </div>
 </div>
