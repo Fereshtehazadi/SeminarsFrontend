@@ -1,10 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+
 
 export default class SignUp extends Component {
 
+    
     constructor(){
         super();
         this.state = { name: "", email: "", phone: "", company:"" };
+      }
+      
+ 
+      showConfirmation(){
+       window.location = '/Confirmation';
+        //this.props.history.push('/Confirmation');
       }
       saveVisitor() {
         fetch("https://localhost:44318/api/Visitors", {
@@ -17,8 +26,8 @@ export default class SignUp extends Component {
             seminarId: parseInt(this.props.seminarId),
           }),
           headers: { "Content-type": "application/json; charset=UTF-8" },
-        });
-//        }).then(() => this.props.onAddedOwner());
+//        });
+        }).then(() => this.showConfirmation());
       }
 
     render() {

@@ -3,6 +3,7 @@ import { Route, Switch, useLocation } from 'react-router-dom'
 import Seminars from '../Pages/Seminars/Seminars'
 import Main from '../Pages/Main/Main'
 import SignUp from '../Pages/SignUp/SignUp'
+import Confirmation from '../Pages/Confirmation/Confirmation'
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -19,9 +20,12 @@ export default function Body() {
                     <Seminars/> 
                 </Route>
                 <Route path="/SignUp">
-                    <SignUp seminarId={query.get("id")}/>
+                    <SignUp onAddedVisitor={() => this.fetchOwners()}   seminarId={query.get("id")}/>
                 </Route>
-                <Route path="/">
+                <Route path="/Confirmation">
+                    <Confirmation/> 
+                </Route>              
+                 <Route path="/">
                     <Main/>
                 </Route>
             </Switch>
